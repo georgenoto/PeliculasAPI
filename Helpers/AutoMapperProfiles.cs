@@ -15,6 +15,9 @@ namespace PeliculasAPI.Helpers
             CreateMap<Genero, GeneroDTO>().ReverseMap();
             //Esto debido a que voy a recibir de post GeneroDTO y voy a transforma a Genero, para guardar en mi BD
             CreateMap<GeneroCreacionDTO, Genero>().ReverseMap();
+
+            CreateMap<Actor, ActorDTO>().ReverseMap();
+            CreateMap<ActorCreacionDTO, Actor>().ReverseMap();
         }
     }
 }
