@@ -19,7 +19,7 @@ namespace PeliculasAPI.Validaciones
         public TipoArchivoValidacion(GrupoTipoArchivo grupoTipoArchivo)
         {
             if (grupoTipoArchivo == GrupoTipoArchivo.Imagen) {
-                this.tiposValidados = new string[] { "image/jpg", "image/png", "image/gif" };
+                this.tiposValidados = new string[] { "image/jpeg", "image/png", "image/gif" };
             }
         }
 
