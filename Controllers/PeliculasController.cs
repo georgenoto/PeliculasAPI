@@ -53,6 +53,7 @@ namespace PeliculasAPI.Controllers
         public async Task<ActionResult> Post([FromForm] PeliculaCreacionDTO  peliculaCreacionDTO)
         {
             var pelicula = mapper.Map<Pelicula>(peliculaCreacionDTO);
+
             if (peliculaCreacionDTO.Poster != null)
             {
                 using (var memoryStream = new MemoryStream())
@@ -63,7 +64,7 @@ namespace PeliculasAPI.Controllers
                     pelicula.Poster = await almacenadorArchivos.GuardarArchivo(contenido, extension, contenedor, peliculaCreacionDTO.Poster.ContentType);
                 }
             }
-
+            AsignarOrdenActores(pelicula);
             context.Add(pelicula);
             await context.SaveChangesAsync();
 
@@ -71,12 +72,24 @@ namespace PeliculasAPI.Controllers
 
             return new CreatedAtRouteResult("ObtenerPelicula", new { id = peliculaDTO.Id }, peliculaDTO);
         }
+        private void AsignarOrdenActores(Pelicula pelicula) 
+        {
+            if (pelicula.PeliculasActores != null) {
+                for (int i = 0; i < pelicula.PeliculasActores.Count; i++)
+                {
+                    pelicula.PeliculasActores[i].Orden = i;
+                }
+            }
+        }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromForm] PeliculaCreacionDTO peliculaCreacionDTO)
         {
             //Porque viene de forma hacemos esto otro para actualizar los datos
-            var peliculaDB = await context.Peliculas.FirstOrDefaultAsync(x => x.Id == id);
+            var peliculaDB = await context.Peliculas
+                .Include(x=> x.PeliculasActores)
+                .Include(x=> x.PeliculasGeneros)
+                .FirstOrDefaultAsync(x => x.Id == id);
             if (peliculaDB == null) { return NotFound(); }
             //Solo los campos que son diferenten entre actorDB y actorCreacionDTO se actualizaran -
             //En las configuraciones de mapeo se va ignorar el campo foto, para que no se mapee automaticamente, ya en en actor.Foto es string y actorCreacionDTO.Foto es un IFormFile
@@ -91,6 +104,7 @@ namespace PeliculasAPI.Controllers
                     peliculaDB.Poster = await almacenadorArchivos.EditarArchivo(contenido, extension, contenedor, peliculaDB.Poster, peliculaCreacionDTO.Poster.ContentType);
                 }
             }
+            AsignarOrdenActores(peliculaDB);
             await context.SaveChangesAsync();
             return NoContent();
         }
