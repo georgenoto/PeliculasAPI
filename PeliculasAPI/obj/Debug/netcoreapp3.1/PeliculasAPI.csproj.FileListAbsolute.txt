@@ -52,3 +52,4 @@ D:\DATOS PERSONALES GNOTO\CAPACITACIONES\APIs RESTFUL ASPNET CORE 6\PeliculasAPI
 D:\DATOS PERSONALES GNOTO\CAPACITACIONES\APIs RESTFUL ASPNET CORE 6\PeliculasAPI\PeliculasAPI\obj\Debug\netcoreapp3.1\PeliculasAPI.genruntimeconfig.cache
 D:\DATOS PERSONALES GNOTO\CAPACITACIONES\APIs RESTFUL ASPNET CORE 6\PeliculasAPI\PeliculasAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
 D:\DATOS PERSONALES GNOTO\CAPACITACIONES\APIs RESTFUL ASPNET CORE 6\PeliculasAPI\PeliculasAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\DATOS PERSONALES GNOTO\CAPACITACIONES\APIs RESTFUL ASPNET CORE 6\PeliculasAPI\PeliculasAPI\obj\Debug\netcoreapp3.1\PeliculasAPI.csproj.AssemblyReference.cache

@@ -57,7 +57,10 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
-**/*.suo/
+*/.suo
+**/.suo
+*.suo
+
 
 # StyleCop
 StyleCopReport.xml
