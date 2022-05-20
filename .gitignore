@@ -27,6 +27,7 @@ bld/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
+*/.vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
@@ -53,6 +54,7 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+/*.suo/
 
 # StyleCop
 StyleCopReport.xml
@@ -85,6 +87,7 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+*.suo
 
 # Chutzpah Test files
 _Chutzpah*
